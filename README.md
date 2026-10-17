@@ -14,3 +14,7 @@ bg `#FFFFFF`, surface `#F3F4F5`, text `#111112`, CTA blue `#0040DC`,
 avatar beige `#D8C3A5`.
 
 Open `index.html` in a browser, or serve the directory with any static server.
+
+## Bob the Bouncer proposal draft
+
+The companion two-page proposal draft is in [`docs/bob-the-bouncer-proposal-draft-v1.md`](docs/bob-the-bouncer-proposal-draft-v1.md).
