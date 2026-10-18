@@ -11,13 +11,15 @@ Six pages: **Pitch** · **Voices** · **One of Many** · **Evidence** · **Offer
 - `assets/prototypes/` and `assets/characters/` — Bob the Bouncer scenarios and
   character art shown in the Bob proposal section.
 - `docs/bob-demo-package.md` — Muse's original demo package attachment.
-- `docs/bob-demo-production-notes.md` — the approved multi-voice production direction.
+- `docs/bob-demo-production-notes.md` — current single-voice production status and timing gate.
+- `docs/bob-demo-visual-storyboard-v1.md` — approved visual story and shot direction.
+- `assets/audio/bob-vo-{en,mr,fr,es}.mp3` — Muse's supplied Bob voice previews, preserved unchanged.
 
 Visual system follows the official Muse palette (ai.meta.com/muse/):
 bg `#FFFFFF`, surface `#F3F4F5`, text `#111112`, CTA blue `#0040DC`,
 avatar beige `#D8C3A5`.
 
-Open `index.html` in a browser, or serve the directory with any static server.
+Open `index.html` in a browser, or serve the directory with any static server. The Bob page contains a film placeholder, selectable voice previews, and the three scenario prototypes; the final synced video is not published yet.
 
 ## Bob the Bouncer proposal draft
 
