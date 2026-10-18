@@ -137,7 +137,7 @@
     .nav {
       justify-self: center;
       display: grid;
-      grid-template-columns: repeat(5, auto);
+      grid-template-columns: repeat(6, auto);
       gap: 2px;
       padding: 4px;
       border: 0;
@@ -146,7 +146,7 @@
       @media (max-width: 820px) {
         justify-self: start;
         width: 100%;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         min-width: 0;
       }
     }
@@ -825,6 +825,93 @@
     .closing .text-link:focus-visible {
       color: var(--muse-yellow);
     }
+    .bob-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, .72fr);
+      gap: clamp(28px, 5vw, 64px);
+      align-items: center;
+      padding: clamp(28px, 5vw, 56px);
+      border-radius: 24px;
+      background: var(--soft);
+      @media (max-width: 820px) { grid-template-columns: 1fr; }
+      @media (max-width: 540px) { padding: 24px; }
+    }
+    .bob-intro h2 {
+      max-width: 760px;
+      margin: 0 0 18px;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: .98;
+      letter-spacing: -.06em;
+    }
+    .bob-intro .lead { margin-bottom: 18px; }
+    .bob-hero-art {
+      width: 100%;
+      max-height: 390px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+    .bob-section { margin-top: 56px; }
+    .bob-section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 20px;
+      @media (max-width: 640px) { display: block; }
+    }
+    .bob-section-head h3 {
+      margin: 0;
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1.08;
+      letter-spacing: -.04em;
+    }
+    .bob-section-head p { max-width: 520px; margin: 0; color: var(--muted); }
+    .bob-role-grid, .bob-principles, .bob-shots {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      @media (max-width: 700px) { grid-template-columns: 1fr; }
+    }
+    .bob-role-card, .bob-principle, .bob-shot {
+      padding: 24px;
+      border-radius: 18px;
+      background: var(--paper-2);
+    }
+    .bob-role-card { display: grid; grid-template-columns: 130px 1fr; gap: 20px; align-items: center; }
+    .bob-role-card img { width: 100%; max-height: 170px; object-fit: contain; mix-blend-mode: multiply; }
+    .bob-role-card h4, .bob-principle h4 { margin: 0 0 8px; font-size: 20px; }
+    .bob-role-card p, .bob-principle p, .bob-shot p { margin: 0; color: var(--muted); line-height: 1.6; }
+    .bob-prototype-shell { overflow: hidden; border-radius: 20px; background: #171613; }
+    .bob-prototype-tools {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      padding: 16px 18px; color: white;
+    }
+    .bob-prototype-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .bob-prototype-tabs button {
+      border: 1px solid #514c43; border-radius: 999px; padding: 9px 14px;
+      background: transparent; color: #f4f0e8; cursor: pointer; font-weight: 700;
+    }
+      .bob-prototype-tabs button[aria-pressed="true"] { background: #e8a33d; border-color: #e8a33d; color: #211a0c; }
+    .bob-prototype-link { color: #fff; font-size: 13px; font-weight: 700; text-underline-offset: 4px; }
+    .bob-prototype-frame { display: block; width: 100%; height: 990px; border: 0; background: #171613; }
+    .bob-simulation-note { margin: 0; padding: 14px 18px; color: #c9c1b1; font-size: 12px; line-height: 1.55; }
+    .bob-principles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (max-width: 820px) { .bob-principles { grid-template-columns: 1fr; } }
+    .bob-principle b { display: inline-grid; place-items: center; width: 30px; height: 30px; margin-bottom: 16px; border-radius: 50%; background: var(--soft); }
+    .bob-shots { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 900px) { .bob-shots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 540px) {
+      .bob-shots { grid-template-columns: 1fr; }
+      .bob-role-card { grid-template-columns: 88px 1fr; padding: 18px; }
+      .bob-prototype-frame { height: 1180px; }
+    }
+    .bob-shot time { display: block; margin-bottom: 12px; color: var(--accent); font-size: 11px; font-weight: 800; }
+    .bob-shot h4 { margin: 0 0 8px; font-size: 17px; }
+    .bob-voice-note {
+      margin-top: 18px; padding: 22px 24px; border-radius: 18px; background: var(--muse-blue);
+      line-height: 1.65;
+    }
+    .bob-voice-note strong { display: block; margin-bottom: 6px; }
     .page-footer {
       display: flex;
       justify-content: space-between;
@@ -941,8 +1028,9 @@
           <button data-page="many" aria-selected="false">One of Many</button>
           <button data-page="evidence" aria-selected="false">Evidence</button>
           <button data-page="offer" aria-selected="false">Offer</button>
+          <button data-page="bob" aria-selected="false">Bob</button>
         </nav>
-        <div class="counter" aria-live="polite">01 / 05</div>
+        <div class="counter" aria-live="polite">01 / 06</div>
       </div>
     </header>
 
@@ -1130,6 +1218,67 @@
           <button class="next-btn" data-next="pitch">Return to the pitch ↺</button>
         </div>
       </section>
+
+      <section class="page" id="bob" data-index="6">
+        <div class="bob-intro">
+          <div>
+            <p class="kicker">A separate proposal · Bob the Bouncer</p>
+            <h2>The last place the scam reaches.</h2>
+            <p class="lead">Don’t narrow the river. Put a calm, evidence-led bouncer at every tap.</p>
+            <p class="body-copy">Bob is a recovery-first anti-scam agent designed around the person under pressure. On duty, he helps someone understand what happened and find a safe next step. Off duty, he teaches the tells before the next scam arrives. No shame in either mode.</p>
+            <button class="primary-btn" data-scroll-to="bob-prototype">Try the three scenarios ↓</button>
+          </div>
+          <img class="bob-hero-art" src="assets/characters/bob-security-full-kit.webp" alt="Bob the Bouncer in his security cap, sunglasses, and BOB THE BOUNCER shirt" />
+        </div>
+
+        <div class="bob-section" aria-labelledby="bob-roles-title">
+          <div class="bob-section-head"><h3 id="bob-roles-title">Two jobs. Two distinct characters.</h3><p>The on-duty Bob is the steady presence during an incident. A separate teacher character carries the prevention work, so each role reads clearly.</p></div>
+          <div class="bob-role-grid">
+            <article class="bob-role-card"><img src="assets/characters/bob-security-full-kit.webp" alt="Full-kit Bob, ready to help during a scam" /><div><h4>On duty · Bob the Bouncer</h4><p>Calm response, visible evidence, safe paths, and a human handoff when it is time for a person to decide.</p></div></article>
+            <article class="bob-role-card"><img src="assets/characters/bob-teacher-reference.webp" alt="The separate teacher character in glasses and a green cardigan" /><div><h4>Off duty · the teacher</h4><p>Short, plain-language lessons help people recognize the patterns before a scam reaches them.</p></div></article>
+          </div>
+        </div>
+
+        <div class="bob-section" id="bob-prototype" aria-labelledby="bob-demo-title">
+          <div class="bob-section-head"><h3 id="bob-demo-title">Three scenarios. One calm playbook.</h3><p>Switch between the clickable email, phone-call, and India digital-arrest prototypes.</p></div>
+          <div class="bob-prototype-shell">
+            <div class="bob-prototype-tools">
+              <div class="bob-prototype-tabs" role="group" aria-label="Bob prototype scenarios">
+                <button type="button" aria-pressed="true" data-prototype="assets/prototypes/bob-mode-prototype.html" data-prototype-title="Email phishing scenario">Phishing email</button>
+                <button type="button" aria-pressed="false" data-prototype="assets/prototypes/bob-mode-prototype-2-call.html" data-prototype-title="CRA scam call scenario">CRA call</button>
+                <button type="button" aria-pressed="false" data-prototype="assets/prototypes/bob-mode-prototype-3-india.html" data-prototype-title="India digital arrest scenario">Digital arrest · India</button>
+              </div>
+              <a class="bob-prototype-link" id="openPrototype" href="assets/prototypes/bob-mode-prototype.html" target="_blank" rel="noopener noreferrer">Open this prototype ↗</a>
+            </div>
+            <iframe class="bob-prototype-frame" id="prototypeFrame" src="assets/prototypes/bob-mode-prototype.html" title="Email phishing scenario" loading="lazy" allow="fullscreen"></iframe>
+            <p class="bob-simulation-note">Prototype only: scenario steps and verdicts are scripted. This does not ingest real email, screen live calls, or detect scams. Product architecture and integrations still need to be built and validated.</p>
+          </div>
+        </div>
+
+        <div class="bob-section" aria-labelledby="bob-principles-title">
+          <div class="bob-section-head"><h3 id="bob-principles-title">The interaction grammar</h3><p>Every scenario follows the same six steps, so people do not have to learn a new system while stressed.</p></div>
+          <div class="bob-principles">
+            <article class="bob-principle"><b>01</b><h4>Calm</h4><p>Stay present and lower the temperature. No shame.</p></article>
+            <article class="bob-principle"><b>02</b><h4>Signal</h4><p>Show what triggered concern: yellow for uncertain, amber for threat, green for resolved.</p></article>
+            <article class="bob-principle"><b>03</b><h4>Safe path</h4><p>Explain the evidence, give a practical next step, then close with a clear receipt.</p></article>
+          </div>
+        </div>
+
+        <div class="bob-section" aria-labelledby="bob-film-title">
+          <div class="bob-section-head"><h3 id="bob-film-title">Two-minute demo · cut plan</h3><p>One visual master, with language and caption overlays kept swappable. The current direction is a multi-voice cast that demonstrates the system can speak to different people.</p></div>
+          <div class="bob-shots">
+            <article class="bob-shot"><time>0:00–0:30</time><h4>The email</h4><p>Phish lands. Bob appears, points to the tells, answers “why?”, and reaches all-clear.</p></article>
+            <article class="bob-shot"><time>0:30–1:15</time><h4>The call</h4><p>Unknown number. Quick taps reveal a threat; show the real CRA safe path.</p></article>
+            <article class="bob-shot"><time>1:15–1:40</time><h4>Digital arrest</h4><p>Show the fake authority and land the plain-language India-specific kill-shot.</p></article>
+            <article class="bob-shot"><time>1:40–2:00</time><h4>The system</h4><p>Yellow, amber, green; human handoff; Bob and the line: “Filter at the tap.”</p></article>
+          </div>
+          <div class="bob-voice-note"><strong>Voice casting direction</strong>Use at least three distinct voices across the demo, with each voice clearly identified and given a meaningful role. Add more when the final runtime and script support it. Muse’s single-voice draft is source material; this multi-voice direction follows Nikhil’s approval. Localization tracks and caption overlays remain a separate production decision.</div>
+        </div>
+        <div class="page-footer">
+          <span>Bob is a separate proposal and pilot concept, alongside the Muse design engagement.</span>
+          <button class="next-btn" data-next="offer">Return to the offer →</button>
+        </div>
+      </section>
     </main>
   </div>
 
@@ -1246,7 +1395,7 @@
         navButtons.forEach(function (button) {
           button.setAttribute('aria-selected', String(button.getAttribute('data-page') === target.id));
         });
-        counter.textContent = String(target.getAttribute('data-index')).padStart(2, '0') + ' / 05';
+        counter.textContent = String(target.getAttribute('data-index')).padStart(2, '0') + ' / 06';
         chorusMode = false;
         stopPlayback();
         updateChorusButton();
@@ -1259,6 +1408,24 @@
       });
       document.querySelectorAll('[data-next]').forEach(function (button) {
         button.addEventListener('click', function () { showPage(button.getAttribute('data-next'), true); });
+      });
+      document.querySelectorAll('[data-scroll-to]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          document.getElementById(button.getAttribute('data-scroll-to')).scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+      var prototypeFrame = document.getElementById('prototypeFrame');
+      var openPrototype = document.getElementById('openPrototype');
+      document.querySelectorAll('[data-prototype]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var source = button.getAttribute('data-prototype');
+          document.querySelectorAll('[data-prototype]').forEach(function (tab) {
+            tab.setAttribute('aria-pressed', String(tab === button));
+          });
+          prototypeFrame.src = source;
+          prototypeFrame.title = button.getAttribute('data-prototype-title');
+          openPrototype.href = source;
+        });
       });
       window.addEventListener('hashchange', function () { showPage(location.hash.slice(1) || 'pitch', false); });
       showPage(location.hash.slice(1) || 'pitch', false);
