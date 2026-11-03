@@ -7,7 +7,7 @@ Five pages: **Pitch** · **Voices** · **One of Many** · **Evidence** · **Offe
 
 - `index.html` — the complete site (single file, inline CSS/JS, hash-routed pages).
 - `assets/voice-01.mp3` … `assets/voice-12.mp3` — twelve voice samples for the
-  Voices page, each pitching Nikhil to Team Muse. *"1,066 voices and they all agree."*
+  Voices page, each pitching Nikhil to Team Muse. *"1,066 voices. One recommendation."*
 
 Visual system follows the official Muse palette (ai.meta.com/muse/):
 bg `#FFFFFF`, surface `#F3F4F5`, text `#111112`, CTA blue `#0040DC`,
