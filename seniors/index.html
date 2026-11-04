@@ -223,6 +223,42 @@
         section.block { margin-top: 28pt; }
         a { color: #111; }
       }
+    
+      /* —— Hero audio player —— */
+      .player { margin: 26px 0 6px; background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 22px 22px 18px; }
+      .player .p-title { font-weight: 800; font-size: calc(1.25rem * var(--fs)); margin: 0 0 4px; }
+      .player .p-sub { color: var(--ink-soft); margin: 0 0 16px; font-size: calc(1rem * var(--fs)); }
+      .p-stage { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+      .orb-wrap { text-align: center; width: 118px; flex: none; }
+      .orb { width: 104px; height: 104px; margin: 0 auto; border-radius: 50%; position: relative;
+        background: radial-gradient(circle at 35% 30%, #fff8ee, #ffe9d6 55%, #ffd9a8);
+        box-shadow: 0 0 0 6px rgba(217,164,65,.25), 0 0 34px 8px rgba(217,164,65,.35);
+        transition: background .6s, box-shadow .6s; }
+      .orb::before, .orb::after { content: ""; position: absolute; top: 58%; width: 18px; height: 12px; border-radius: 50%; background: rgba(240,120,160,.55); }
+      .orb::before { left: 16px; } .orb::after { right: 16px; }
+      .orb .eyes { position: absolute; top: 40%; left: 0; right: 0; display: flex; justify-content: center; gap: 22px; }
+      .orb .eyes i { width: 9px; height: 13px; border-radius: 50%; background: #2b2118; display: block; }
+      .orb .mouth { position: absolute; top: 56%; left: 50%; width: 22px; height: 11px; margin-left: -11px; border-bottom: 3px solid #2b2118; border-radius: 0 0 22px 22px; }
+      .orb.myrtle { background: radial-gradient(circle at 35% 30%, #f2faf5, #d7ecdd 55%, #a9cfb6);
+        box-shadow: 0 0 0 6px rgba(23,92,70,.18), 0 0 34px 8px rgba(23,92,70,.30); }
+      .playing .orb { animation: orbPulse 1.6s ease-in-out infinite; }
+      @keyframes orbPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+      .orb-name { margin-top: 8px; font-weight: 700; font-size: calc(.98rem * var(--fs)); }
+      .orb-name span { color: var(--ink-soft); font-weight: 400; display: block; font-size: calc(.85rem * var(--fs)); }
+      .p-main { flex: 1 1 300px; min-width: 260px; }
+      .wave { display: flex; align-items: center; gap: 2px; height: 74px; cursor: pointer; }
+      .wave i { flex: 1; border-radius: 3px; min-width: 2px; opacity: .28; transition: opacity .2s; }
+      .wave i.jolly { background: #d9a441; } .wave i.myrtle { background: var(--clara); }
+      .wave i.played { opacity: 1; }
+      .playing .wave i.played { animation: waveDance 0.9s ease-in-out infinite alternate; animation-delay: var(--dl, 0s); }
+      @keyframes waveDance { from { transform: scaleY(.75); } to { transform: scaleY(1.12); } }
+      .p-controls { display: flex; align-items: center; gap: 16px; margin-top: 12px; }
+      .p-btn { width: 64px; height: 64px; flex: none; border-radius: 50%; border: none; background: var(--clara); color: #fff; font-size: 26px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+      .p-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+      .p-time { font-variant-numeric: tabular-nums; color: var(--ink-soft); font-size: calc(1rem * var(--fs)); }
+      .p-caption { margin-top: 12px; font-size: calc(1.05rem * var(--fs)); line-height: 1.5; min-height: 3em; }
+      .p-caption b.jolly { color: var(--gold); } .p-caption b.myrtle { color: var(--clara); }
+      @media (prefers-reduced-motion: reduce) { .playing .orb, .playing .wave i.played { animation: none; } }
     </style>
   </head>
   <body>
@@ -244,6 +280,27 @@
         <div class="privacy-line">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div><strong>This page collects nothing.</strong> There is no sign-up and no form. You copy words from this page into your own Muse, on your own phone. What you tell Muse stays between you and Muse.</div>
+        </div>
+
+
+        <div class="player" id="player">
+          <p class="p-title">▶ Listen first — Jolly meets Myrtle (3½ minutes)</p>
+          <p class="p-sub">Jolly is the voice of Muse. Myrtle is 78 and asks the questions everyone asks. The gold bars are Jolly talking; the green bars are Myrtle.</p>
+          <div class="p-stage">
+            <div class="orb-wrap">
+              <div class="orb" id="orb" aria-hidden="true"><div class="eyes"><i></i><i></i></div><div class="mouth"></div></div>
+              <div class="orb-name"><span>Now speaking</span><b id="orb-name">Jolly</b></div>
+            </div>
+            <div class="p-main">
+              <div class="wave" id="wave" role="slider" aria-label="Audio progress — tap to move through the recording" aria-valuemin="0" aria-valuemax="213" aria-valuenow="0" tabindex="0"></div>
+              <div class="p-controls">
+                <button class="p-btn" id="p-btn" type="button" aria-label="Play the recording">▶</button>
+                <span class="p-time"><span id="p-cur">0:00</span> / 3:33</span>
+              </div>
+              <p class="p-caption" id="p-caption"><b class="jolly">Jolly:</b> Hello. I am Jolly, and I am Muse. I come from Meta, the same company that brings you WhatsApp.</p>
+            </div>
+          </div>
+          <audio id="hero-audio" src="jolly-and-myrtle.mp3" preload="metadata"></audio>
         </div>
 
         <div class="staff">
@@ -762,5 +819,48 @@ If a letter is about money I might owe, a benefit I might lose, or anything lega
 
       })();
     </script>
+  
+      <script>
+      (function () {
+        var SEGS = [[0.0, 12.1, "Jolly", "Hello. I am Jolly, and I am Muse. I come from Meta, the same company that brings you WhatsApp."], [12.1, 23.8, "Myrtle", "I am seventy-eight years old, and I will be honest with you. I do not need one more app."], [23.8, 43.2, "Jolly", "You do not have to pay for me. Muse is free, and free gives you far more talking time than you will ever need."], [43.2, 46.1, "Myrtle", "Help with what, exactly? In plain words, please."], [46.1, 62.6, "Jolly", "Plain words, always. First, the scary calls. You say, Bob, check this."], [62.6, 63.7, "Myrtle", "Who is Bob?"], [63.7, 84.5, "Jolly", "Bob the Bouncer. He lives inside me, and he guards your door. Hang up. Hanging up is always safe."], [84.5, 88.6, "Myrtle", "And on a normal day? No bad calls, just life."], [88.6, 107.2, "Jolly", "On a normal day, you meet Clara. Clara the Clerk keeps your book \u2014 tablets, refills, the whole week."], [107.2, 111.3, "Myrtle", "I forget what the doctor said before I even get home."], [111.3, 132.5, "Jolly", "Clara books your appointment \u2014 and the morning after, she asks once: what did the doctor say?"], [132.5, 135.4, "Myrtle", "And letters? The print gets smaller every year."], [135.4, 150.8, "Jolly", "Take a photo of the letter. Bob checks it is real. Then Clara reads it in plain words."], [150.8, 155.9, "Myrtle", "Let me ask you straight, Jolly. Are you trying to be my friend?"], [155.9, 174.6, "Jolly", "No, Myrtle. I am a helper, not a friend. I am the front desk. I keep the book, I guard the door, then I leave you in peace."], [174.6, 179.3, "Myrtle", "The front desk. I like that. And if I do not answer you?"], [179.3, 195.4, "Jolly", "Then I wait. I ask once, and if there is no answer, I ask again next time you come to me. No chasing."], [195.4, 199.8, "Myrtle", "All right, Jolly. You can stay. But remember, I am in charge."], [199.8, 213.0, "Jolly", "You are in charge. And if a strange call ever scares you: Pause. Check. Hang up."]];
+        var audio = document.getElementById('hero-audio');
+        var wave = document.getElementById('wave');
+        var btn = document.getElementById('p-btn');
+        var cur = document.getElementById('p-cur');
+        var orb = document.getElementById('orb');
+        var orbName = document.getElementById('orb-name');
+        var caption = document.getElementById('p-caption');
+        var player = document.getElementById('player');
+        var DUR = 213, NB = 96, bars = [];
+        function segAt(t) { for (var i = 0; i < SEGS.length; i++) { if (t < SEGS[i][1]) return SEGS[i]; } return SEGS[SEGS.length - 1]; }
+        for (var i = 0; i < NB; i++) {
+          var mid = (i + 0.5) / NB * DUR;
+          var b = document.createElement('i');
+          var h = 22 + Math.round(52 * Math.abs(Math.sin(i * 12.9898) * 0.7 + Math.sin(i * 3.7) * 0.3));
+          b.style.height = h + 'px';
+          b.style.setProperty('--dl', (i % 12) * 0.07 + 's');
+          b.className = segAt(mid)[2] === 'Jolly' ? 'jolly' : 'myrtle';
+          wave.appendChild(b); bars.push(b);
+        }
+        function fmt(s) { s = Math.max(0, Math.floor(s)); return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+        function render() {
+          var t = audio.currentTime || 0;
+          var seg = segAt(t);
+          orb.className = 'orb' + (seg[2] === 'Myrtle' ? ' myrtle' : '');
+          orbName.textContent = seg[2];
+          caption.innerHTML = '<b class="' + seg[2].toLowerCase() + '">' + seg[2] + ':</b> ' + seg[3];
+          cur.textContent = fmt(t);
+          wave.setAttribute('aria-valuenow', Math.round(t));
+          for (var i = 0; i < NB; i++) { bars[i].classList.toggle('played', (i + 0.5) / NB * DUR <= t); }
+        }
+        btn.addEventListener('click', function () { if (audio.paused) { audio.play(); } else { audio.pause(); } });
+        audio.addEventListener('play', function () { player.classList.add('playing'); btn.textContent = '❚❚'; btn.setAttribute('aria-label', 'Pause the recording'); });
+        audio.addEventListener('pause', function () { player.classList.remove('playing'); btn.textContent = '▶'; btn.setAttribute('aria-label', 'Play the recording'); });
+        audio.addEventListener('timeupdate', render);
+        audio.addEventListener('ended', function () { audio.currentTime = 0; render(); });
+        wave.addEventListener('click', function (e) { var r = wave.getBoundingClientRect(); audio.currentTime = Math.min(0.999, Math.max(0, (e.clientX - r.left) / r.width)) * DUR; render(); });
+        render();
+      })();
+      </script>
   </body>
 </html>
