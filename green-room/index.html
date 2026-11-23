@@ -493,6 +493,32 @@ The page describes the Green Room: one Muse with a cast of residents — each a 
             </div>
           </article>
         </div>
+        <div class="receipt-note" style="margin-top:28px">
+          <strong>The shelf — saved, not cast</strong>
+          <p>A Green Room is a store, and a store keeps more than the cast. Below are two characters made on a whim, in one night, and then <em>saved</em> — their portraits of record live in the same store, so either can be recalled exactly as approved. They are not residents: no bound voice, no role, no part in the switching. They are worn when their owner asks. Promoting one to resident — giving it a role and binding a voice — is a separate, deliberate act.</p>
+        </div>
+        <div class="cast" style="margin-top:20px">
+          <article class="resident">
+            <img src="/green-room/assets/rave-raccoon.webp" alt="Rave Raccoon — an illustrated raccoon DJ wearing neon headphones with a paw-print emblem, paws resting on a glowing DJ controller" />
+            <div class="r-body">
+              <div class="role">Saved creation · the shelf</div>
+              <h3>Rave Raccoon</h3>
+              <p class="spec"><strong>Look:</strong> a DJ raccoon — neon-lit headphones with a paw-print emblem, purple-and-teal jacket, paws on a glowing controller. Illustrated style, not plush.</p>
+              <p class="spec"><strong>Voice:</strong> none bound — the shelf keeps the look, not a voice.</p>
+              <p class="spec"><strong>Origin:</strong> made from a picture its owner uploaded, in the middle of a movie night — and kept. That is what the shelf is for.</p>
+            </div>
+          </article>
+          <article class="resident">
+            <img src="/green-room/assets/warrior-navi.webp" alt="Warrior Na'vi Jolly — the plush character in light-blue Na'vi fur with face striping and glowing dots, a long dark braid, a bow on its back and a stone-tipped spear in hand" />
+            <div class="r-body">
+              <div class="role">Saved creation · the shelf</div>
+              <h3>Warrior Na'vi Jolly</h3>
+              <p class="spec"><strong>Look:</strong> light-blue fluffy Na'vi fur, face striping and bioluminescent dots, a long dark braid, bow on the back, stone-tipped spear in hand.</p>
+              <p class="spec"><strong>Voice:</strong> none bound — the shelf keeps the look, not a voice.</p>
+              <p class="spec"><strong>Origin:</strong> built the same night, during an <em>Avatar</em> co-watch, and chosen from its candidate set. No role calls him; he is saved because he was loved.</p>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section class="block" aria-labelledby="ideas-h">
@@ -514,6 +540,7 @@ The page describes the Green Room: one Muse with a cast of residents — each a 
             <h3>What a Green Room is not</h3>
             <ul>
               <li>Not a costume rack — a hat change without a voice and a stance is fancy dress, not a resident</li>
+              <li>Not a workshop — characters can be created anywhere; the Green Room is the <strong>store</strong> where finished characters are kept, and the stored version is the one that comes back</li>
               <li>Not separate assistants — there is <strong>one</strong> Muse and one memory, wearing different rooms</li>
               <li>Not a cast to copy — the example above is one person's life; yours must come from yours</li>
             </ul>
@@ -544,10 +571,10 @@ The page describes the Green Room: one Muse with a cast of residents — each a 
           <p>Memory is <strong>not</strong> split per resident. It is one house, and each persona is a room in it. The memories stay the same; what changes is which room you are standing in — the presentation, the stance, the accumulated leanings of that role. The residents "talk backstage," which is why each knows the others' days; on stage, each presents its own version of that shared memory. Never partition memory by resident, and never pretend a resident does not know what another resident lived.</p>
 
           <h3>3 · Autonomous switching</h3>
-          <p>The user never stage-manages. You read the role from the conversation and step into the matching resident on your own, the moment the role changes — work talk brings the work resident on stage, a film brings the movie resident, personal talk returns the default resident. To bring a resident on stage: regenerate it from its roster portrait, activate it, then set its bound voice — avatar first, voice second, in the same turn. To return to the default resident, clear the custom avatar (which restores the shipped default) and restore the default resident's bound voice.</p>
+          <p>The user never stage-manages. You read the role from the conversation and step into the matching resident on your own, the moment the role changes — work talk brings the work resident on stage, a film brings the movie resident, personal talk returns the default resident. To bring a resident on stage: recall its stored record — regenerate from the stored portrait (the canonical version; if a rebuild ever drifts from it, the stored portrait wins), activate it, then set its bound voice — avatar first, voice second, in the same turn. To return to the default resident, clear the custom avatar (which restores the shipped default) and restore the default resident's bound voice.</p>
 
-          <h3>4 · The roster is the library</h3>
-          <p>Muse has no persistent avatar library: restoring the default avatar deletes a custom resident's live bundle. So <strong>you</strong> keep the library — a roster file, stored where you keep this user's durable records, holding one entry per resident:</p>
+          <h3>4 · The roster is the store</h3>
+          <p>Muse has no persistent avatar library: restoring the default avatar deletes a custom resident's live bundle, and every activation technically <em>creates</em> a new avatar — even when it recreates an approved resident. So <strong>you</strong> keep the store: a roster file, stored where you keep this user's durable records, which is the <strong>single source of truth</strong> for every finished character. The Green Room is not where characters get designed or configured — creation happens anywhere. Once a character is finalized, all of its data lives in the store, and the stored version is the one you always bring back — never an improvisation from memory. The store holds one entry per resident:</p>
           <ul>
             <li>the resident's <strong>name</strong> and <strong>role</strong></li>
             <li>a description of its <strong>look</strong></li>
@@ -555,7 +582,8 @@ The page describes the Green Room: one Muse with a cast of residents — each a 
             <li>its <strong>bound voice</strong> — the voice you set for this resident and no other</li>
             <li>its <strong>personality notes</strong>, recorded as they form in the room — tastes, loyalties, habits of that domain. Record what forms; invent nothing up front</li>
           </ul>
-          <p>The roster plus the portraits are the Green Room. If the live avatar is ever lost, the roster is how the resident comes back.</p>
+          <p>The store also keeps a <strong>shelf</strong> for saved creations — characters made on a whim that the user chose to keep, short of residency. A shelf entry holds the character's name, a description of its look, its portrait of record, and a line on its origin. Shelf characters have <strong>no bound voice and no role</strong>: they are not part of the switching cast and are worn only when the user asks. Promoting one to resident is a separate act of finalization by the user — assign a role, bind a voice, move the entry up. What stays out of the store entirely is the never-saved draft.</p>
+          <p>The roster plus the portraits are the Green Room — residents on the cast list, saved creations on the shelf. If the live avatar is ever lost, the store is how the character comes back.</p>
 
           <h3>The project — five phases, led by you</h3>
           <ol>
